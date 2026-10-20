@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment (never commit secrets)
+.env
+.env.*
+!.env.example
+
+# Uploaded files (user content, kept out of git)
+uploads/*
+!uploads/.gitkeep
+
+# Logs and temporary files
+logs/
+*.log
+npm-debug.log*
+tmp/
+.tmp/
+*.tmp
+coverage/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+tmp/
