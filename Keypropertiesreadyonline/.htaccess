@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1. Forward all /api/v1/* and /api/* requests to pure PHP in api/index.php
+  RewriteRule ^api/v1/(.*)$ api/index.php [QSA,L]
+  RewriteRule ^api/v1$ api/index.php [QSA,L]
+  RewriteRule ^api/(.*)$ api/index.php [QSA,L]
+  RewriteRule ^api$ api/index.php [QSA,L]
+
+  # 2. Serve physical files and folders directly
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # 3. All other client-side routes (SPA) load index.html
+  RewriteRule ^ index.html [L]
+</IfModule>
